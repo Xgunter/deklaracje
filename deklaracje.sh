@@ -159,7 +159,7 @@ mkdir $HOME/.local/share/applications
 
 wget -O $HOME/adobe-air-sdk/e-pity/setup_e-pity2017Linux.air http://download.e-pity.pl/down/setup_e-pity2017Linux.air
 
-cat <<__CONF__ | tee $HOME/.local/share/applications/e-pity.desktop
+cat <<__CONF__ | tee e-pity.desktop
 [Desktop Entry]
 Name=e-Pity
 Comment=e-Pity
@@ -171,8 +171,8 @@ Icon=$HOME/adobe-air-sdk/e-pity/e-pity.png
 __CONF__
 
 wget -O $HOME/adobe-air-sdk/e-pity/e-pity.png https://www.e-pity.pl/cms/img/u/program/e-pity-przez-internet-2017-18-pudelko.png   
-
-chmod +x $HOME/.local/share/applications/e-pity.desktop
+chmod +x e-pity.desktop
+cp e-pity.desktop $HOME/.local/share/applications/
 }
 
 ##==============RPM==========================##
