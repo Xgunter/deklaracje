@@ -136,7 +136,7 @@ cp /tmp/assets/icons/icon128.png  $HOME/adobe-air-sdk/e-deklaracje/e-deklaracje.
 
 mkdir $HOME/.local/share/applications
 
-cat <<__CONF__ | tee $HOME/.local/share/applications/e-deklaracje.desktop
+cat <<__CONF__ | tee e-deklaracje.desktop
 [Desktop Entry]
 Name=e-Deklaracje
 Comment=e-Deklaracje
@@ -147,7 +147,8 @@ Exec=$HOME/adobe-air-sdk/adobe-air/adobe-air $HOME/adobe-air-sdk/e-deklaracje/e-
 Icon=$HOME/adobe-air-sdk/e-deklaracje/e-deklaracje.png
 __CONF__
 
-chmod +x $HOME/.local/share/applications/e-deklaracje.desktop
+chmod +x e-deklaracje.desktop
+cp e-deklaracje.desktop  $HOME/.local/share/applications/
 }
 
 #e-pity
