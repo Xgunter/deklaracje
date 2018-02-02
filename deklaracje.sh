@@ -7,7 +7,18 @@
 # Zlepił w całość i pokolorował :) gunter
 
 cd /tmp/
-cp /usr/share/applications/leafpad.desktop  $HOME/.local/share/applications/
+
+cat <<__CONF__ | tee $HOME/.local/share/applications/test.desktop
+[Desktop Entry]
+Name=e-Pity
+Comment=e-Pity
+Type=Application
+Terminal=false
+Categories=Application;Office;
+Exec=$HOME/adobe-air-sdk/adobe-air/adobe-air  $HOME/adobe-air-sdk/e-pity/setup_e-pity2017Linux.air
+Icon=$HOME/adobe-air-sdk/e-pity/e-pity.png
+__CONF__
+
 #sudo\su
 if command -v sudo >/dev/null; then sprawdz=$(echo sudo sh -c) ; else sprawdz=$(echo su -c) ; fi
 
