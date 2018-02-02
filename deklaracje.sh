@@ -142,7 +142,7 @@ Name=e-Deklaracje
 Comment=e-Deklaracje
 Type=Application
 Terminal=false
-Categories=Office
+Categories=Application;Office;
 Exec=$HOME/adobe-air-sdk/adobe-air/adobe-air $HOME/adobe-air-sdk/e-deklaracje/e-DeklaracjeDesktop.air
 Icon=$HOME/adobe-air-sdk/e-deklaracje/e-deklaracje.png
 __CONF__
@@ -164,7 +164,7 @@ Name=e-Pity
 Comment=e-Pity
 Type=Application
 Terminal=false
-Categories=Office
+Categories=Application;Office;
 Exec=$HOME/adobe-air-sdk/adobe-air/adobe-air  $HOME/adobe-air-sdk/e-pity/setup_e-pity2017Linux.air
 Icon=$HOME/adobe-air-sdk/e-pity/e-pity.png
 __CONF__
@@ -237,7 +237,7 @@ Name=e-Deklaracje
 Comment=e-Deklaracje
 Type=Application
 Terminal=false
-Categories=Office
+Categories=Application;Office;
 Exec=$HOME/adobe-air-sdk/adobe-air/adobe-air $HOME/adobe-air-sdk/e-deklaracje/e-DeklaracjeDesktop.air
 Icon=$HOME/adobe-air-sdk/e-deklaracje/e-deklaracje.png
 __CONF__
@@ -300,7 +300,7 @@ Name=e-Pity
 Comment=e-Pity
 Type=Application
 Terminal=false
-Categories=Office
+Categories=Application;Office;
 Exec=$HOME/adobe-air-sdk/adobe-air/adobe-air  $HOME/adobe-air-sdk/e-pity/setup_e-pity2017Linux.air
 Icon=$HOME/adobe-air-sdk/e-pity/e-pity.png
 __CONF__
