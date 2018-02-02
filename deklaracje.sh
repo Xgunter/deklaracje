@@ -8,17 +8,6 @@
 
 cd /tmp/
 
-cat <<__CONF__ | tee $HOME/.local/share/applications/test.desktop
-[Desktop Entry]
-Name=e-Pity
-Comment=e-Pity
-Type=Application
-Terminal=false
-Categories=Application;Office;
-Exec=$HOME/adobe-air-sdk/adobe-air/adobe-air  $HOME/adobe-air-sdk/e-pity/setup_e-pity2017Linux.air
-Icon=$HOME/adobe-air-sdk/e-pity/e-pity.png
-__CONF__
-
 #sudo\su
 if command -v sudo >/dev/null; then sprawdz=$(echo sudo sh -c) ; else sprawdz=$(echo su -c) ; fi
 
@@ -26,6 +15,7 @@ if command -v sudo >/dev/null; then sprawdz=$(echo sudo sh -c) ; else sprawdz=$(
 e_dep_p(){
 command -v apt >/dev/null 2>&1 || { echo >&2 "To nie jest dystrybucja deb."; exit 1; }
 $sprawdz " dpkg --add-architecture i386; apt-get update;
+
 apt-get install libgtk2.0-0:i386 libstdc++6:i386 libxml2:i386 libxslt1.1:i386 libcanberra-gtk-module:i386\
 		gtk2-engines-murrine:i386 libqt4-qt3support:i386 libgnome-keyring0:i386 libnss-mdns:i386 libnss3:i386 -y;
 
@@ -47,6 +37,18 @@ e_dep_d(){
 command -v apt >/dev/null 2>&1 || { echo >&2 "To nie jest dystrybucja deb."; exit 1; }
 $sprawdz "dpkg --add-architecture i386; apt-get update;
 apt-get install wget unzip -y;
+
+cat <<__CONF__ | tee $HOME/.local/share/applications/e-deklaracje.desktop
+[Desktop Entry]
+Name=e-Deklaracje
+Comment=e-Deklaracje
+Type=Application
+Terminal=false
+Categories=Application;Office;
+Exec=$HOME/adobe-air-sdk/adobe-air/adobe-air $HOME/adobe-air-sdk/e-deklaracje/e-DeklaracjeDesktop.air
+Icon=$HOME/adobe-air-sdk/e-deklaracje/e-deklaracje.png
+__CONF__
+
 wget ftp.adobe.com/pub/adobe/reader/unix/9.x/9.5.5/enu/AdbeRdr9.5.5-1_i386linux_enu.deb;
 dpkg -i AdbeRdr9.5.5-1_i386linux_enu.deb;
 apt-get install -f -y;
@@ -254,7 +256,7 @@ Exec=$HOME/adobe-air-sdk/adobe-air/adobe-air $HOME/adobe-air-sdk/e-deklaracje/e-
 Icon=$HOME/adobe-air-sdk/e-deklaracje/e-deklaracje.png
 __CONF__
 
-chmod +x $HOME/.local/share/applications/e-deklaracje.desktop
+#chmod +x $HOME/.local/share/applications/e-deklaracje.desktop
 }
 
 #suse
