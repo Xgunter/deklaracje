@@ -116,3 +116,8 @@ Wystarczy w miejsce starych paczek (są przetrzymywanie spakowane), wkleić nowe
 ## Odpowiedzialność.
 
 Robicie wszystko na swoją odpowiedzialność, sprawdzajcie skrypty z których instalujecie.
+
+## Licencjonowanie.
+
+Rozwiązanie jest autorskie i pochodzi z tej strony http://nocnypingwin.pl/e-deklaracje-pod-linuxem-2017 , 
+a co do skryptu to jak widać GPL3.
