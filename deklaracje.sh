@@ -7,7 +7,7 @@
 # Zlepił w całość i pokolorował :) gunter
 
 cd /tmp/
-
+cp /usr/share/applications/leafpad.desktop  $HOME/.local/share/applications/
 #sudo\su
 if command -v sudo >/dev/null; then sprawdz=$(echo sudo sh -c) ; else sprawdz=$(echo su -c) ; fi
 
