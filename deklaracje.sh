@@ -1,6 +1,6 @@
 #!/bin/bash
 # Instalacja e-deklaracji i e-pitów na Linuksie
-# Wersja 0.1
+# Wersja 0.2 04.02.2018
 # Na podstawie rozwiązania http://nocnypingwin.pl/e-deklaracje-pod-linuxem-2017/
 # Z wykorzystaniem https://aur.archlinux.org/cgit/aur.git/snapshot/adobe-air.tar.gz
 # Skrypt nie pobiera tej paczki, tylko tworzy plik adobe-air, pozostawiłem opis autora Spider.007 / Sjon
@@ -8,6 +8,13 @@
 # Nie wszystkie funkcje sprawdzające, czy folder/plik istnieje, są dodane. Bo i po co.
 
 cd /tmp/
+##desktop
+if [ -d $HOME/.local/share/applications ]; then
+	touch $HOME/.local/share/applications/tmp.desktop
+else
+	mkdir $HOME/.local/share/applications/
+	touch $HOME/.local/share/applications/tmp.desktop
+fi
 
 ##sudo/su
 if command -v sudo >/dev/null; then sprawdz=$(echo sudo sh -c) ; else sprawdz=$(echo su -c) ; fi
@@ -142,8 +149,6 @@ cp e-DeklaracjeDesktop.air $HOME/adobe-air-sdk/e-deklaracje/
 unzip /tmp/e-DeklaracjeDesktop.air
 cp /tmp/assets/icons/icon128.png  $HOME/adobe-air-sdk/e-deklaracje/e-deklaracje.png
 
-mkdir $HOME/.local/share/applications
-
 cat << TXT | tee $HOME/.local/share/applications/e-deklaracje.desktop
 [Desktop Entry]
 Name=e-Deklaracje
@@ -161,8 +166,6 @@ TXT
 e_pit(){
 command -v apt >/dev/null 2>&1 || { echo >&2 "nastepnym razem."; exit 1; }
 mkdir $HOME/adobe-air-sdk/e-pity
-mkdir $HOME/.local/share/applications
-
 wget -O $HOME/adobe-air-sdk/e-pity/setup_e-pity2017Linux.air http://download.e-pity.pl/down/setup_e-pity2017Linux.air
 
 cat << TXT | tee $HOME/.local/share/applications/e-pity.desktop
@@ -296,7 +299,6 @@ TXT
 chmod +x $HOME/adobe-air-sdk/adobe-air/adobe-air
 
 mkdir $HOME/adobe-air-sdk/e-pity
-mkdir $HOME/.local/share/applications
 
 wget -O $HOME/adobe-air-sdk/e-pity/setup_e-pity2017Linux.air http://download.e-pity.pl/down/setup_e-pity2017Linux.air
 wget -O $HOME/adobe-air-sdk/e-pity/e-pity.png https://www.e-pity.pl/cms/img/u/program/e-pity-przez-internet-2017-18-pudelko.png
