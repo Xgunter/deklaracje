@@ -1,13 +1,16 @@
 #!/bin/bash
 # Instalacja e-deklaracji i e-pitów na Linuksie
-# Wersja 0.4a 04.02.2018
+# Wersja 0.5 04.02.2018
 # Na podstawie rozwiązania http://nocnypingwin.pl/e-deklaracje-pod-linuxem-2017/
 # Z wykorzystaniem https://aur.archlinux.org/cgit/aur.git/snapshot/adobe-air.tar.gz
 # Skrypt nie pobiera tej paczki, tylko tworzy plik adobe-air, pozostawiłem opis autora Spider.007 / Sjon
 # Zlepił w całość i pokolorował :) gunter
 # Nie wszystkie funkcje sprawdzające, czy folder/plik istnieje, są dodane. Bo i po co.
 
-cd /tmp/
+#tymczasowy
+mkdir /tmp/tmpdek
+cd /tmp/tmpdek
+
 ##desktop
 if [ -d $HOME/.local/share/applications ]; then
 	touch $HOME/.local/share/applications/e-deklaracje.desktop
@@ -54,6 +57,7 @@ apt-get install libgtk2.0-0:i386 libstdc++6:i386 libxml2:i386 libxslt1.1:i386 li
 wget ftp.adobe.com/pub/adobe/reader/unix/9.x/9.5.5/enu/AdbeRdr9.5.5-1_i386linux_enu.deb;
 dpkg -i AdbeRdr9.5.5-1_i386linux_enu.deb;
 apt-get install -f -y;
+rm AdbeRdr9.5.5-1_i386linux_enu.deb;
 
 ln -s /usr/lib/i386-linux-gnu/libgnome-keyring.so.0 /usr/lib/libgnome-keyring.so.0;
 ln -s /usr/lib/i386-linux-gnu/libgnome-keyring.so.0.2.0 /usr/lib/libgnome-keyring.so.0.2.0;
@@ -81,6 +85,7 @@ apt-get install libgtk2.0-0:i386 libstdc++6:i386 libxml2:i386 libxslt1.1:i386 li
 wget ftp.adobe.com/pub/adobe/reader/unix/9.x/9.5.5/enu/AdbeRdr9.5.5-1_i386linux_enu.deb;
 dpkg -i AdbeRdr9.5.5-1_i386linux_enu.deb;
 apt-get install -f -y;
+rm AdbeRdr9.5.5-1_i386linux_enu.deb;
 
 ln -s /usr/lib/i386-linux-gnu/libgnome-keyring.so.0 /usr/lib/libgnome-keyring.so.0;
 ln -s /usr/lib/i386-linux-gnu/libgnome-keyring.so.0.2.0 /usr/lib/libgnome-keyring.so.0.2.0;
@@ -149,7 +154,7 @@ wget http://www.finanse.mf.gov.pl/documents/766655/1196444/e-DeklaracjeDesktop.a
 cp e-DeklaracjeDesktop.air $HOME/adobe-air-sdk/e-deklaracje/
 
 unzip e-DeklaracjeDesktop.air
-cp /tmp/assets/icons/icon128.png  $HOME/adobe-air-sdk/e-deklaracje/e-deklaracje.png
+cp assets/icons/icon128.png  $HOME/adobe-air-sdk/e-deklaracje/e-deklaracje.png
 
 cat << TXT | tee $HOME/.local/share/applications/e-deklaracje.desktop
 [Desktop Entry]
@@ -168,12 +173,12 @@ TXT
 e_pit(){
 command -v apt >/dev/null 2>&1 || { echo >&2 "nastepnym razem."; exit 1; }
 mkdir $HOME/adobe-air-sdk/e-pity
-wget -O $HOME/adobe-air-sdk/e-pity/setup_e-pity2017Linux.air http://download.e-pity.pl/down/setup_e-pity2017Linux.air
+wget http://download.e-pity.pl/down/setup_e-pity2017Linux.air
+cp setup_e-pity2017Linux.air $HOME/adobe-air-sdk/e-pity/setup_e-pity2017Linux.air
 
-mkdir /tmp/e_pity
-cp $HOME/adobe-air-sdk/e-pity/setup_e-pity2017Linux.air /tmp/
-unzip setup_e-pity2017Linux.air -d /tmp/e_pity
-cp /tmp/e_pity/Assets/icons/pity_128_256.png $HOME/adobe-air-sdk/e-pity/e-pity.png
+mkdir e_pity
+unzip setup_e-pity2017Linux.air -d e_pity
+cp e_pity/Assets/icons/pity_128_256.png $HOME/adobe-air-sdk/e-pity/e-pity.png
 
 cat << TXT | tee $HOME/.local/share/applications/e-pity.desktop
 [Desktop Entry]
@@ -205,6 +210,7 @@ sudo dnf upgrade nss libgnome-keyring libxslt -y
 wget ftp.adobe.com/pub/adobe/reader/unix/9.x/9.5.5/enu/AdbeRdr9.5.5-1_i486linux_enu.rpm
 sudo dnf install  AdbeRdr9.5.5-1_i486linux_enu.rpm -y
 sudo dnf  install libgnome-keyring.i686 nss.i686 rpm-build libxslt.i686 wget unzip -y
+sudo rm AdbeRdr9.5.5-1_i486linux_enu.rpm
 wget airdownload.adobe.com/air/lin/download/2.6/adobeair.i386.rpm
 sudo dnf install adobeair.i386.rpm -y
 
@@ -243,8 +249,8 @@ mkdir $HOME/adobe-air-sdk/e-deklaracje
 wget http://www.finanse.mf.gov.pl/documents/766655/1196444/e-DeklaracjeDesktop.air
 cp e-DeklaracjeDesktop.air $HOME/adobe-air-sdk/e-deklaracje/
 
-unzip /tmp/e-DeklaracjeDesktop.air
-cp /tmp/assets/icons/icon128.png  $HOME/adobe-air-sdk/e-deklaracje/e-deklaracje.png
+unzip e-DeklaracjeDesktop.air
+cp assets/icons/icon128.png  $HOME/adobe-air-sdk/e-deklaracje/e-deklaracje.png
 
 cat << TXT | tee $HOME/.local/share/applications/e-deklaracje.desktop
 [Desktop Entry]
@@ -305,12 +311,12 @@ TXT
 chmod +x $HOME/adobe-air-sdk/adobe-air/adobe-air
 mkdir $HOME/adobe-air-sdk/e-pity
 
-wget -O $HOME/adobe-air-sdk/e-pity/setup_e-pity2017Linux.air http://download.e-pity.pl/down/setup_e-pity2017Linux.air
+wget http://download.e-pity.pl/down/setup_e-pity2017Linux.air
+cp setup_e-pity2017Linux.air $HOME/adobe-air-sdk/e-pity/setup_e-pity2017Linux.air
 
-mkdir /tmp/e_pity
-cp $HOME/adobe-air-sdk/e-pity/setup_e-pity2017Linux.air /tmp/
-unzip setup_e-pity2017Linux.air -d /tmp/e_pity
-cp /tmp/e_pity/Assets/icons/pity_128_256.png $HOME/adobe-air-sdk/e-pity/e-pity.png
+mkdir e_pity
+unzip setup_e-pity2017Linux.air -d e_pity
+cp e_pity/Assets/icons/pity_128_256.png $HOME/adobe-air-sdk/e-pity/e-pity.png
 
 cat << TXT | tee $HOME/.local/share/applications/e-pity.desktop
 [Desktop Entry]
@@ -395,3 +401,7 @@ elif [[ $wybor == "6"  ]] ; then
 elif [[ $wybor != "1-6"  ]] ; then
 	tput setaf 1; tput bold; tput cup 7 12; echo "źle wybrałeś, uruchom od nowa" ; tput sgr0 ; tput rc
 fi
+
+##clear
+cd ..
+rm -R /tmp/tmpdek
