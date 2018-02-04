@@ -148,7 +148,7 @@ mkdir $HOME/adobe-air-sdk/e-deklaracje
 wget http://www.finanse.mf.gov.pl/documents/766655/1196444/e-DeklaracjeDesktop.air
 cp e-DeklaracjeDesktop.air $HOME/adobe-air-sdk/e-deklaracje/
 
-unzip /tmp/e-DeklaracjeDesktop.air
+unzip e-DeklaracjeDesktop.air
 cp /tmp/assets/icons/icon128.png  $HOME/adobe-air-sdk/e-deklaracje/e-deklaracje.png
 
 cat << TXT | tee $HOME/.local/share/applications/e-deklaracje.desktop
@@ -170,9 +170,10 @@ command -v apt >/dev/null 2>&1 || { echo >&2 "nastepnym razem."; exit 1; }
 mkdir $HOME/adobe-air-sdk/e-pity
 wget -O $HOME/adobe-air-sdk/e-pity/setup_e-pity2017Linux.air http://download.e-pity.pl/down/setup_e-pity2017Linux.air
 
+mkdir /tmp/e_pity
 cp $HOME/adobe-air-sdk/e-pity/setup_e-pity2017Linux.air /tmp/
-unzip setup_e-pity2017Linux.air
-cp /tmp/Assets/icons/pity_128_256.png $HOME/adobe-air-sdk/e-pity/e-pity.png
+unzip setup_e-pity2017Linux.air -d /tmp/e_pity
+cp /tmp/e_pity/Assets/icons/pity_128_256.png $HOME/adobe-air-sdk/e-pity/e-pity.png
 
 cat << TXT | tee $HOME/.local/share/applications/e-pity.desktop
 [Desktop Entry]
@@ -304,8 +305,10 @@ TXT
 chmod +x $HOME/adobe-air-sdk/adobe-air/adobe-air
 mkdir $HOME/adobe-air-sdk/e-pity
 
-unzip setup_e-pity2017Linux.air
-cp /tmp/Assets/icons/pity_128_256.png $HOME/adobe-air-sdk/e-pity/e-pity.png
+mkdir /tmp/e_pity
+cp $HOME/adobe-air-sdk/e-pity/setup_e-pity2017Linux.air /tmp/
+unzip setup_e-pity2017Linux.air -d /tmp/e_pity
+cp /tmp/e_pity/Assets/icons/pity_128_256.png $HOME/adobe-air-sdk/e-pity/e-pity.png
 
 wget -O $HOME/adobe-air-sdk/e-pity/setup_e-pity2017Linux.air http://download.e-pity.pl/down/setup_e-pity2017Linux.air
 
