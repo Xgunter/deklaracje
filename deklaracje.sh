@@ -1,6 +1,6 @@
 #!/bin/bash
 # Instalacja e-deklaracji i e-pitów na Linuksie
-# Wersja 0.2 04.02.2018
+# Wersja 0.3 04.02.2018
 # Na podstawie rozwiązania http://nocnypingwin.pl/e-deklaracje-pod-linuxem-2017/
 # Z wykorzystaniem https://aur.archlinux.org/cgit/aur.git/snapshot/adobe-air.tar.gz
 # Skrypt nie pobiera tej paczki, tylko tworzy plik adobe-air, pozostawiłem opis autora Spider.007 / Sjon
@@ -10,10 +10,10 @@
 cd /tmp/
 ##desktop
 if [ -d $HOME/.local/share/applications ]; then
-	touch $HOME/.local/share/applications/tmp.desktop
+	touch $HOME/.local/share/applications/e-deklaracje.desktop
 else
 	mkdir $HOME/.local/share/applications/
-	touch $HOME/.local/share/applications/tmp.desktop
+	touch $HOME/.local/share/applications/e-deklaracje.desktop
 fi
 
 ##sudo/su
@@ -25,7 +25,8 @@ command -v apt >/dev/null 2>&1 || { echo >&2 "To nie jest dystrybucja deb."; exi
 $sprawdz " dpkg --add-architecture i386; apt-get update;
 
 apt-get install libgtk2.0-0:i386 libstdc++6:i386 libxml2:i386 libxslt1.1:i386 libcanberra-gtk-module:i386\
-		gtk2-engines-murrine:i386 libqt4-qt3support:i386 libgnome-keyring0:i386 libnss-mdns:i386 libnss3:i386 -y;
+		gtk2-engines-murrine:i386 libqt4-qt3support:i386 libgnome-keyring0:i386 libnss-mdns:i386\
+		libnss3:i386 wget unzip -y;
 
 ln -s /usr/lib/i386-linux-gnu/libgnome-keyring.so.0 /usr/lib/libgnome-keyring.so.0;
 ln -s /usr/lib/i386-linux-gnu/libgnome-keyring.so.0.2.0 /usr/lib/libgnome-keyring.so.0.2.0;
@@ -45,13 +46,14 @@ EOF
 e_dep_d(){
 command -v apt >/dev/null 2>&1 || { echo >&2 "To nie jest dystrybucja deb."; exit 1; }
 $sprawdz " dpkg --add-architecture i386; apt-get update;
-apt-get install wget unzip -y;
+
+apt-get install libgtk2.0-0:i386 libstdc++6:i386 libxml2:i386 libxslt1.1:i386 libcanberra-gtk-module:i386\
+		gtk2-engines-murrine:i386 libqt4-qt3support:i386 libgnome-keyring0:i386 libnss-mdns:i386\
+		libnss3:i386 wget unzip -y;
+
 wget ftp.adobe.com/pub/adobe/reader/unix/9.x/9.5.5/enu/AdbeRdr9.5.5-1_i386linux_enu.deb;
 dpkg -i AdbeRdr9.5.5-1_i386linux_enu.deb;
 apt-get install -f -y;
-
-apt-get install libgtk2.0-0:i386 libstdc++6:i386 libxml2:i386 libxslt1.1:i386 libcanberra-gtk-module:i386\
-		gtk2-engines-murrine:i386 libqt4-qt3support:i386 libgnome-keyring0:i386 libnss-mdns:i386 libnss3:i386 -y;
 
 ln -s /usr/lib/i386-linux-gnu/libgnome-keyring.so.0 /usr/lib/libgnome-keyring.so.0;
 ln -s /usr/lib/i386-linux-gnu/libgnome-keyring.so.0.2.0 /usr/lib/libgnome-keyring.so.0.2.0;
@@ -71,13 +73,14 @@ EOF
 e_dep_o(){
 command -v apt >/dev/null 2>&1 || { echo >&2 "To nie jest dystrybucja deb."; exit 1; }
 $sprawdz " dpkg --add-architecture i386; apt-get update;
-apt-get install wget unzip -y;
+
+apt-get install libgtk2.0-0:i386 libstdc++6:i386 libxml2:i386 libxslt1.1:i386 libcanberra-gtk-module:i386\
+		gtk2-engines-murrine:i386 libqt4-qt3support:i386 libgnome-keyring0:i386 libnss-mdns:i386\
+		libnss3:i386 wget unzip -y;
+
 wget ftp.adobe.com/pub/adobe/reader/unix/9.x/9.5.5/enu/AdbeRdr9.5.5-1_i386linux_enu.deb;
 dpkg -i AdbeRdr9.5.5-1_i386linux_enu.deb;
 apt-get install -f -y;
-
-apt-get install libgtk2.0-0:i386 libstdc++6:i386 libxml2:i386 libxslt1.1:i386 libcanberra-gtk-module:i386\
-		gtk2-engines-murrine:i386 libqt4-qt3support:i386 libgnome-keyring0:i386 libnss-mdns:i386 libnss3:i386 -y;
 
 ln -s /usr/lib/i386-linux-gnu/libgnome-keyring.so.0 /usr/lib/libgnome-keyring.so.0;
 ln -s /usr/lib/i386-linux-gnu/libgnome-keyring.so.0.2.0 /usr/lib/libgnome-keyring.so.0.2.0;
@@ -101,7 +104,6 @@ $HOME/adobe-air-sdk/adobe-air/adobe-air  $HOME/adobe-air-sdk/e-pity/setup_e-pity
 EOF
 "
 }
-
 
 ##AdobeAIRSDK
 e_air(){
@@ -168,6 +170,9 @@ command -v apt >/dev/null 2>&1 || { echo >&2 "nastepnym razem."; exit 1; }
 mkdir $HOME/adobe-air-sdk/e-pity
 wget -O $HOME/adobe-air-sdk/e-pity/setup_e-pity2017Linux.air http://download.e-pity.pl/down/setup_e-pity2017Linux.air
 
+unzip setup_e-pity2017Linux.air
+cp /tmp/Assets/icons/pity_128_256.png $HOME/adobe-air-sdk/e-pity/e-pity.png
+
 cat << TXT | tee $HOME/.local/share/applications/e-pity.desktop
 [Desktop Entry]
 Name=e-Pity
@@ -178,8 +183,6 @@ Categories=Office
 Exec=$HOME/adobe-air-sdk/adobe-air/adobe-air  $HOME/adobe-air-sdk/e-pity/setup_e-pity2017Linux.air
 Icon=$HOME/adobe-air-sdk/e-pity/e-pity.png
 TXT
-
-wget -O $HOME/adobe-air-sdk/e-pity/e-pity.png https://www.e-pity.pl/cms/img/u/program/e-pity-przez-internet-2017-18-pudelko.png
 
 }
 
@@ -193,13 +196,13 @@ chmod +x /usr/bin/e-*;
 
 cat > /usr/bin/e-deklaracje <<EOF
 #!/bin/bash
-$HOME/adobe-air-sdk/adobe-air/adobe-air  $HOME/adobe-air-sdk/e-pity/setup_e-pity2017Linux.air
+$HOME/adobe-air-sdk/adobe-air/adobe-air  $HOME/adobe-air-sdk/e-deklaracje/e-DeklaracjeDesktop.air
 EOF"
 
 sudo dnf upgrade nss libgnome-keyring libxslt -y
 wget ftp.adobe.com/pub/adobe/reader/unix/9.x/9.5.5/enu/AdbeRdr9.5.5-1_i486linux_enu.rpm
 sudo dnf install  AdbeRdr9.5.5-1_i486linux_enu.rpm -y
-sudo dnf  install libgnome-keyring.i686 nss.i686 rpm-build libxslt.i686 -y
+sudo dnf  install libgnome-keyring.i686 nss.i686 rpm-build libxslt.i686 wget unzip -y
 wget airdownload.adobe.com/air/lin/download/2.6/adobeair.i386.rpm
 sudo dnf install adobeair.i386.rpm -y
 
@@ -257,7 +260,8 @@ TXT
 suse(){
 command -v zypper >/dev/null 2>&1 || { echo >&2 "To nie jest Suse."; exit 1; }
 
-sudo zypper -n install libxslt1-32bit libgnome-keyring0-32bit mozilla-nss-32bit libstdc++6-32bit libgtk-2_0-0-32bit libgthread-2_0-0-32bit
+sudo zypper -n install libxslt1-32bit libgnome-keyring0-32bit mozilla-nss-32bit libstdc++6-32bit\
+		libgtk-2_0-0-32bit libgthread-2_0-0-32bit wget unzip
 
 sudo sh -c "touch /usr/bin/e-pity;
 chmod +x /usr/bin/e-*;
@@ -297,11 +301,12 @@ rm -Rf $tmpdir && echo "adobe-air: Done"
 TXT
 
 chmod +x $HOME/adobe-air-sdk/adobe-air/adobe-air
-
 mkdir $HOME/adobe-air-sdk/e-pity
 
+unzip setup_e-pity2017Linux.air
+cp /tmp/Assets/icons/pity_128_256.png $HOME/adobe-air-sdk/e-pity/e-pity.png
+
 wget -O $HOME/adobe-air-sdk/e-pity/setup_e-pity2017Linux.air http://download.e-pity.pl/down/setup_e-pity2017Linux.air
-wget -O $HOME/adobe-air-sdk/e-pity/e-pity.png https://www.e-pity.pl/cms/img/u/program/e-pity-przez-internet-2017-18-pudelko.png
 
 cat << TXT | tee $HOME/.local/share/applications/e-pity.desktop
 [Desktop Entry]
