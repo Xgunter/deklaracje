@@ -170,6 +170,7 @@ command -v apt >/dev/null 2>&1 || { echo >&2 "nastepnym razem."; exit 1; }
 mkdir $HOME/adobe-air-sdk/e-pity
 wget -O $HOME/adobe-air-sdk/e-pity/setup_e-pity2017Linux.air http://download.e-pity.pl/down/setup_e-pity2017Linux.air
 
+cp $HOME/adobe-air-sdk/e-pity/setup_e-pity2017Linux.air /tmp/
 unzip setup_e-pity2017Linux.air
 cp /tmp/Assets/icons/pity_128_256.png $HOME/adobe-air-sdk/e-pity/e-pity.png
 
