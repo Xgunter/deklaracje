@@ -1,13 +1,13 @@
 #!/bin/bash
 # Instalacja e-deklaracji i e-pitów na Linuksie
-# Wersja 0.5 04.02.2018
+# Wersja 0.5a 04.02.2018
 # Na podstawie rozwiązania http://nocnypingwin.pl/e-deklaracje-pod-linuxem-2017/
 # Z wykorzystaniem https://aur.archlinux.org/cgit/aur.git/snapshot/adobe-air.tar.gz
 # Skrypt nie pobiera tej paczki, tylko tworzy plik adobe-air, pozostawiłem opis autora Spider.007 / Sjon
 # Zlepił w całość i pokolorował :) gunter
 # Nie wszystkie funkcje sprawdzające, czy folder/plik istnieje, są dodane. Bo i po co.
 
-#tymczasowy
+##tymczasowy
 mkdir /tmp/tmpdek
 cd /tmp/tmpdek
 
@@ -262,6 +262,8 @@ Categories=Office
 Exec=$HOME/adobe-air-sdk/adobe-air/adobe-air $HOME/adobe-air-sdk/e-deklaracje/e-DeklaracjeDesktop.air
 Icon=$HOME/adobe-air-sdk/e-deklaracje/e-deklaracje.png
 TXT
+
+e-deklaracje
 }
 
 ##suse
@@ -328,6 +330,8 @@ Categories=Office
 Exec=$HOME/adobe-air-sdk/adobe-air/adobe-air  $HOME/adobe-air-sdk/e-pity/setup_e-pity2017Linux.air
 Icon=$HOME/adobe-air-sdk/e-pity/e-pity.png
 TXT
+
+e-pity
 }
 
 ##menu
@@ -393,9 +397,9 @@ elif [[ $wybor == "2"  ]] ; then
 elif [[ $wybor == "3"  ]] ; then
 	echo "instaluje e-deklaracje i e-pity" ; (e_dep_o) ; (e_air) ; (e_dek) ; (e_pit) ; e-deklaracje
 elif [[ $wybor == "4"  ]] ; then
-	echo "Fedora e-deklaracje" ; (fedora) ; e-deklaracje
+	echo "Fedora e-deklaracje" ; (fedora)
 elif [[ $wybor == "5"  ]] ; then
-	echo "Suse e-pity" ; (suse) ; e-pity
+	echo "Suse e-pity" ; (suse)
 elif [[ $wybor == "6"  ]] ; then
 	echo "Jednak nie instaluje"
 elif [[ $wybor != "1-6"  ]] ; then
