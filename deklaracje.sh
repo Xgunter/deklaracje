@@ -1,6 +1,6 @@
 #!/bin/bash
 # Instalacja e-deklaracji i e-pitów na Linuksie
-# Wersja 0.5a 04.02.2018
+# Wersja 0.6 04.02.2018
 # Na podstawie rozwiązania http://nocnypingwin.pl/e-deklaracje-pod-linuxem-2017/
 # Z wykorzystaniem https://aur.archlinux.org/cgit/aur.git/snapshot/adobe-air.tar.gz
 # Skrypt nie pobiera tej paczki, tylko tworzy plik adobe-air, pozostawiłem opis autora Spider.007 / Sjon
@@ -24,7 +24,6 @@ if command -v sudo >/dev/null; then sprawdz=$(echo sudo sh -c) ; else sprawdz=$(
 
 ##depends_p
 e_dep_p(){
-command -v apt >/dev/null 2>&1 || { echo >&2 "To nie jest dystrybucja deb."; exit 1; }
 $sprawdz " dpkg --add-architecture i386; apt-get update;
 
 apt-get install libgtk2.0-0:i386 libstdc++6:i386 libxml2:i386 libxslt1.1:i386 libcanberra-gtk-module:i386\
@@ -47,7 +46,6 @@ EOF
 
 ##depends_d
 e_dep_d(){
-command -v apt >/dev/null 2>&1 || { echo >&2 "To nie jest dystrybucja deb."; exit 1; }
 $sprawdz " dpkg --add-architecture i386; apt-get update;
 
 apt-get install libgtk2.0-0:i386 libstdc++6:i386 libxml2:i386 libxslt1.1:i386 libcanberra-gtk-module:i386\
@@ -75,7 +73,6 @@ EOF
 
 ##depends_o
 e_dep_o(){
-command -v apt >/dev/null 2>&1 || { echo >&2 "To nie jest dystrybucja deb."; exit 1; }
 $sprawdz " dpkg --add-architecture i386; apt-get update;
 
 apt-get install libgtk2.0-0:i386 libstdc++6:i386 libxml2:i386 libxslt1.1:i386 libcanberra-gtk-module:i386\
@@ -112,8 +109,6 @@ EOF
 
 ##AdobeAIRSDK
 e_air(){
-command -v apt >/dev/null 2>&1 || { echo >&2 "Nie tu i nie teraz."; exit 1; }
-
 wget http://airdownload.adobe.com/air/lin/download/2.6/AdobeAIRSDK.tbz2
 mkdir $HOME/adobe-air-sdk
 tar jxf AdobeAIRSDK.tbz2 -C $HOME/adobe-air-sdk
@@ -148,7 +143,6 @@ chmod +x $HOME/adobe-air-sdk/adobe-air/adobe-air
 
 ##e-deklaracje
 e_dek(){
-command -v apt >/dev/null 2>&1 || { echo >&2 "Pa pa pa."; exit 1; }
 mkdir $HOME/adobe-air-sdk/e-deklaracje
 wget http://www.finanse.mf.gov.pl/documents/766655/1196444/e-DeklaracjeDesktop.air
 cp e-DeklaracjeDesktop.air $HOME/adobe-air-sdk/e-deklaracje/
@@ -171,7 +165,6 @@ TXT
 
 ##e-pity
 e_pit(){
-command -v apt >/dev/null 2>&1 || { echo >&2 "nastepnym razem."; exit 1; }
 mkdir $HOME/adobe-air-sdk/e-pity
 wget http://download.e-pity.pl/down/setup_e-pity2017Linux.air
 cp setup_e-pity2017Linux.air $HOME/adobe-air-sdk/e-pity/setup_e-pity2017Linux.air
@@ -334,6 +327,33 @@ TXT
 e-pity
 }
 
+##grupy_deb
+deb_d(){
+command -v apt >/dev/null 2>&1 || { echo >&2 "To nie jest dystrybucja deb."; exit 1; }
+(e_dep_d)
+(e_air)
+(e_dek)
+e-deklaracje
+}
+
+deb_p(){
+command -v apt >/dev/null 2>&1 || { echo >&2 "To nie jest dystrybucja deb."; exit 1; }
+(e_dep_p)
+(e_air)
+(e_pit)
+e-pity
+}
+
+deb_o(){
+command -v apt >/dev/null 2>&1 || { echo >&2 "To nie jest dystrybucja deb."; exit 1; }
+(e_dep_o)
+(e_air)
+(e_dek)
+(e_pit)
+e-deklaracje
+}
+
+
 ##menu
 tput clear
 tput cup 1 9
@@ -391,11 +411,11 @@ tput sgr0
 tput rc
 
 if [[ $wybor == "1"  ]] ; then
-	echo "instaluje e-deklaracje" ; (e_dep_d) ; (e_air) ; (e_dek) ; e-deklaracje
+	echo "instaluje e-deklaracje" ; (deb_d)
 elif [[ $wybor == "2"  ]] ; then
-	echo "instaluje e-pity" ;  (e_dep_p) ; (e_air) ; (e_pit) ; e-pity
+	echo "instaluje e-pity" ; (deb_p) 
 elif [[ $wybor == "3"  ]] ; then
-	echo "instaluje e-deklaracje i e-pity" ; (e_dep_o) ; (e_air) ; (e_dek) ; (e_pit) ; e-deklaracje
+	echo "instaluje e-deklaracje i e-pity" ; (deb_o)
 elif [[ $wybor == "4"  ]] ; then
 	echo "Fedora e-deklaracje" ; (fedora)
 elif [[ $wybor == "5"  ]] ; then
