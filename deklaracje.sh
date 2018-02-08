@@ -1,6 +1,6 @@
 #!/bin/bash
 # Instalacja e-deklaracji i e-pitów na Linuksie
-# Wersja 0.6 04.02.2018
+# Wersja 0.7 09.02.2018
 # Na podstawie rozwiązania http://nocnypingwin.pl/e-deklaracje-pod-linuxem-2017/
 # Z wykorzystaniem https://aur.archlinux.org/cgit/aur.git/snapshot/adobe-air.tar.gz
 # Skrypt nie pobiera tej paczki, tylko tworzy plik adobe-air, pozostawiłem opis autora Spider.007 / Sjon
@@ -187,10 +187,8 @@ TXT
 }
 
 ##========RPM
-##fedora
-fedora(){
-command -v dnf >/dev/null 2>&1 || { echo >&2 "To nie jest Fedora."; exit 1; }
-
+##fedora_depends_d
+fedora_dep_d(){
 sudo sh -c "touch /usr/bin/e-deklaracje;
 chmod +x /usr/bin/e-*;
 
@@ -207,62 +205,10 @@ sudo rm AdbeRdr9.5.5-1_i486linux_enu.rpm
 wget airdownload.adobe.com/air/lin/download/2.6/adobeair.i386.rpm
 sudo dnf install adobeair.i386.rpm -y
 
-wget http://airdownload.adobe.com/air/lin/download/2.6/AdobeAIRSDK.tbz2
-mkdir $HOME/adobe-air-sdk
-tar jxf AdobeAIRSDK.tbz2 -C $HOME/adobe-air-sdk
-
-mkdir $HOME/adobe-air-sdk/adobe-air
-cat << 'TXT' > $HOME/adobe-air-sdk/adobe-air/adobe-air
-#!/bin/bash
-# Simple Adobe Air SDK wrapper script to use it as a simple AIR application launcher
-# By Spider.007 / Sjon
-
-if [[ -z "$1" ]]
-then
-	echo "Please supply an .air application as first argument"
-	exit 1
-fi
-
-tmpdir=`mktemp -d /tmp/adobeair.XXXXXXXXXX`
-
-echo "adobe-air: Extracting application to directory: $tmpdir"
-mkdir -p $tmpdir
-unzip -q $1 -d $tmpdir || exit 1
-
-echo "adobe-air: Attempting to start application"
-$HOME/adobe-air-sdk/bin/adl -nodebug $tmpdir/META-INF/AIR/application.xml $tmpdir
-
-echo "adobe-air: Cleaning up temporary directory"
-rm -Rf $tmpdir && echo "adobe-air: Done"
-TXT
-
-chmod +x $HOME/adobe-air-sdk/adobe-air/adobe-air
-
-mkdir $HOME/adobe-air-sdk/e-deklaracje
-wget http://www.finanse.mf.gov.pl/documents/766655/1196444/e-DeklaracjeDesktop.air
-cp e-DeklaracjeDesktop.air $HOME/adobe-air-sdk/e-deklaracje/
-
-unzip e-DeklaracjeDesktop.air
-cp assets/icons/icon128.png  $HOME/adobe-air-sdk/e-deklaracje/e-deklaracje.png
-
-cat << TXT | tee $HOME/.local/share/applications/e-deklaracje.desktop
-[Desktop Entry]
-Name=e-Deklaracje
-Comment=e-Deklaracje
-Type=Application
-Terminal=false
-Categories=Office
-Exec=$HOME/adobe-air-sdk/adobe-air/adobe-air $HOME/adobe-air-sdk/e-deklaracje/e-DeklaracjeDesktop.air
-Icon=$HOME/adobe-air-sdk/e-deklaracje/e-deklaracje.png
-TXT
-
-e-deklaracje
 }
 
-##suse
-suse(){
-command -v zypper >/dev/null 2>&1 || { echo >&2 "To nie jest Suse."; exit 1; }
-
+##suse_depends_p 
+suse_dep_p(){
 sudo zypper -n install libxslt1-32bit libgnome-keyring0-32bit mozilla-nss-32bit libstdc++6-32bit\
 		libgtk-2_0-0-32bit libgthread-2_0-0-32bit wget unzip
 
@@ -274,57 +220,6 @@ cat > /usr/bin/e-pity <<EOF
 $HOME/adobe-air-sdk/adobe-air/adobe-air  $HOME/adobe-air-sdk/e-pity/setup_e-pity2017Linux.air
 EOF"
 
-wget http://airdownload.adobe.com/air/lin/download/2.6/AdobeAIRSDK.tbz2
-mkdir $HOME/adobe-air-sdk
-tar jxf AdobeAIRSDK.tbz2 -C $HOME/adobe-air-sdk
-
-mkdir $HOME/adobe-air-sdk/adobe-air
-cat << 'TXT' > $HOME/adobe-air-sdk/adobe-air/adobe-air
-#!/bin/bash
-# Simple Adobe Air SDK wrapper script to use it as a simple AIR application launcher
-# By Spider.007 / Sjon
-
-if [[ -z "$1" ]]
-then
-	echo "Please supply an .air application as first argument"
-	exit 1
-fi
-
-tmpdir=`mktemp -d /tmp/adobeair.XXXXXXXXXX`
-
-echo "adobe-air: Extracting application to directory: $tmpdir"
-mkdir -p $tmpdir
-unzip -q $1 -d $tmpdir || exit 1
-
-echo "adobe-air: Attempting to start application"
-$HOME/adobe-air-sdk/bin/adl -nodebug $tmpdir/META-INF/AIR/application.xml $tmpdir
-
-echo "adobe-air: Cleaning up temporary directory"
-rm -Rf $tmpdir && echo "adobe-air: Done"
-TXT
-
-chmod +x $HOME/adobe-air-sdk/adobe-air/adobe-air
-mkdir $HOME/adobe-air-sdk/e-pity
-
-wget http://download.e-pity.pl/down/setup_e-pity2017Linux.air
-cp setup_e-pity2017Linux.air $HOME/adobe-air-sdk/e-pity/setup_e-pity2017Linux.air
-
-mkdir e_pity
-unzip setup_e-pity2017Linux.air -d e_pity
-cp e_pity/Assets/icons/pity_128_256.png $HOME/adobe-air-sdk/e-pity/e-pity.png
-
-cat << TXT | tee $HOME/.local/share/applications/e-pity.desktop
-[Desktop Entry]
-Name=e-Pity
-Comment=e-Pity
-Type=Application
-Terminal=false
-Categories=Office
-Exec=$HOME/adobe-air-sdk/adobe-air/adobe-air  $HOME/adobe-air-sdk/e-pity/setup_e-pity2017Linux.air
-Icon=$HOME/adobe-air-sdk/e-pity/e-pity.png
-TXT
-
-e-pity
 }
 
 ##grupy_deb
@@ -353,6 +248,22 @@ command -v apt >/dev/null 2>&1 || { echo >&2 "To nie jest dystrybucja deb."; exi
 e-deklaracje
 }
 
+##grupy_rpm
+fedora(){
+command -v dnf >/dev/null 2>&1 || { echo >&2 "To nie jest Fedora."; exit 1; }
+(fedora_dep_d)
+(e_air)
+(e_dek)
+e-deklaracje
+}
+
+suse(){
+command -v zypper >/dev/null 2>&1 || { echo >&2 "To nie jest Suse."; exit 1; }
+(suse_dep_p)
+(e_air)
+(e_pit)
+e-pity
+}
 
 ##menu
 tput clear
