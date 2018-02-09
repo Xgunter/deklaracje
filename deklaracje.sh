@@ -1,6 +1,6 @@
 #!/bin/bash
 # Instalacja e-deklaracji i e-pitów na Linuksie
-# Wersja 0.7 09.02.2018
+# Wersja 0.8 09.02.2018
 # Na podstawie rozwiązania http://nocnypingwin.pl/e-deklaracje-pod-linuxem-2017/
 # Z wykorzystaniem https://aur.archlinux.org/cgit/aur.git/snapshot/adobe-air.tar.gz
 # Skrypt nie pobiera tej paczki, tylko tworzy plik adobe-air, pozostawiłem opis autora Spider.007 / Sjon
@@ -202,16 +202,11 @@ wget ftp.adobe.com/pub/adobe/reader/unix/9.x/9.5.5/enu/AdbeRdr9.5.5-1_i486linux_
 sudo dnf install  AdbeRdr9.5.5-1_i486linux_enu.rpm -y
 sudo dnf  install libgnome-keyring.i686 nss.i686 rpm-build libxslt.i686 wget unzip -y
 sudo rm AdbeRdr9.5.5-1_i486linux_enu.rpm
-wget airdownload.adobe.com/air/lin/download/2.6/adobeair.i386.rpm
-sudo dnf install adobeair.i386.rpm -y
 
 }
 
 ##suse_depends_p 
 suse_dep_p(){
-sudo zypper -n install libxslt1-32bit libgnome-keyring0-32bit mozilla-nss-32bit libstdc++6-32bit\
-		libgtk-2_0-0-32bit libgthread-2_0-0-32bit wget unzip
-
 sudo sh -c "touch /usr/bin/e-pity;
 chmod +x /usr/bin/e-*;
 
@@ -219,6 +214,9 @@ cat > /usr/bin/e-pity <<EOF
 #!/bin/bash
 $HOME/adobe-air-sdk/adobe-air/adobe-air  $HOME/adobe-air-sdk/e-pity/setup_e-pity2017Linux.air
 EOF"
+
+sudo zypper -n install libxslt1-32bit libgnome-keyring0-32bit mozilla-nss-32bit libstdc++6-32bit\
+		libgtk-2_0-0-32bit libgthread-2_0-0-32bit wget unzip
 
 }
 
