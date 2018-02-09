@@ -99,7 +99,8 @@ zatwierdzamy jak chcemy korzystać z e-deklaracji.
   tak jak pisałem budowanie środowiska 32-bitowego na systemie 64-bitowym.
 * **Fedora 27**-64bity – nie ma problemów, nie dodałem możliwości instalacji e-pitów, ale sprawdzałem
   działają prawidłowo.
-* **OpenSuse Tumbleweed** - nie działa adobe reader, niezbędny do e-deklaracji, e-pity działają prawidłowo.
+* **OpenSuse Tumbleweed** - nie działa adobe reader, niezbędny do e-deklaracji, e-pity działają prawidłowo 
+  na systemie 32-bity i 64 bity.
 * **OpenSUSE-13.2** – e-deklaracje i e-pity działają prawidłowo, ze względów opisanych wyżej dodana jest
   tylko możliwość instalacji e-pitów.
 
