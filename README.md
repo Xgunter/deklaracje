@@ -16,7 +16,7 @@ trzeba traktować to testowo). Na OpenSuse Tumbleweed nie działa Adobereader, k
 komponentem e-deklaracji, dlatego do momentu rozwiązania tego problemu jest dostępna możliwość instalacji tylko
 e-pitów na suse. 
 Na architekturze 64-bitowej jak i na 32-bitowej, z sudo i bez, i nie tylko na Gnome i Kde. Jeżeli coś się nie 
-powiodło trzeba powtórzyć instalacje, wcześniej i czasami wyczyścić /tmp z nie w pełni pobranych plików 
+powiodło trzeba powtórzyć instalacje, czasami wyczyścić /tmp z nie w pełni pobranych plików 
 (przy zerwaniu połączenia internetowego, na przykład), może być pytanie o nadpisanie istniejących paczek. 
 
 ## Uwaga: 
