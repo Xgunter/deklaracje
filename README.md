@@ -91,8 +91,8 @@ zatwierdzamy jak chcemy korzystać z e-deklaracji.
 * **Debian stabilny, testowy, niestabilny**, obydwie architektury i368 i x64 – nie ma problemów
 * **Ubuntu-16.04**-64bit -nie ma problemów
 * **Ubuntu-18.04 i nowsze** pakiety potrzebne do działania e-deklaracji i e-pitów zostały przeniesione 
-    do repozytoriów universe, dlatego trzeba mieć je dodane. Na przykład dla 18.04 na końcu linii z
-    adresem oficjalnym dodajemy universe. Przykład.
+    do repozytoriów universe, dlatego trzeba mieć je dodane. Na przykład dla 18.04 w /etc/apt/sources.list 
+    na końcu linii z adresem oficjalnym dodajemy słowo universe. Przykład.
          ```http://archive.ubuntu.com/ubuntu/ bionic main restricted universe```
 * **Linuxmint-18.3** mate - , programy działają prawidłowo, tylko nie czyta czasami skrótów startowych 
   desktop, albo uruchamiamy z terminala, albo kopiujemy na Pulpit/Desktop.
