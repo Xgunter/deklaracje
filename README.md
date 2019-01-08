@@ -90,7 +90,7 @@ zatwierdzamy jak chcemy korzystać z e-deklaracji.
 ## Testowane na.
 * **Debian stabilny, testowy, niestabilny**, obydwie architektury i368 i x64 – nie ma problemów
 * **Ubuntu-16.04**-64bit -nie ma problemów
-* **Ubuntu-18.04 i nowsze** pakiety potrzebne do działania e-deklaracji i e-pitów zostały przeniesione 
+* **Ubuntu-18.04 i nowsze**. Pakiety potrzebne do działania e-deklaracji i e-pitów zostały przeniesione 
     do repozytoriów **universe**, dlatego trzeba mieć je dodane. Na przykład dla 18.04 w /etc/apt/sources.list 
     na końcu linii z adresem oficjalnym dodajemy słowo universe. Przykład.
     
