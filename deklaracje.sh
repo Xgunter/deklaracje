@@ -1,12 +1,12 @@
 #!/bin/bash
 # Instalacja e-deklaracji i e-pitów na Linuksie
-# Wersja 0.9a 08.01.2019
+# Wersja 0.9b 08.01.2019
 # Na podstawie rozwiązania http://nocnypingwin.pl/e-deklaracje-pod-linuxem-2017/
 # Z wykorzystaniem https://aur.archlinux.org/cgit/aur.git/snapshot/adobe-air.tar.gz
 # Skrypt nie pobiera tej paczki, tylko tworzy plik adobe-air, pozostawiłem opis autora Spider.007 / Sjon
 # Zlepił w całość i pokolorował :) gunter
 # Nie wszystkie funkcje sprawdzające, czy folder/plik istnieje, są dodane. Bo i po co.
-
+# UWAGA: W Ubuntu 18.04 i nowszych dodać repozytoria universe, opis w README.
 ##tymczasowy
 mkdir /tmp/tmpdek
 cd /tmp/tmpdek
