@@ -1,5 +1,5 @@
-## deklaracje
-Deklaracje podatkowe w systemie Linux
+## Deklaracje podatkowe.
+Deklaracje podatkowe w systemie Linux.
 
 Skrypt instalujący e-deklaracje i e-pity na systemie Debian i pochodnych, jak Ubuntu, Mint i inne.  
 Testowo Fedora i OpenSuse.
@@ -45,7 +45,7 @@ paczkami pobranymi do cache instalatora.
 ## Instalacja
 Uruchomić jako użytkownik, nie root.
 
-Albo, pobieramy skrypt ze stronie https://github.com/Xgunter/deklaracje i w konsoli, lub od razu w konsoli.
+Albo, pobieramy skrypt ze strony https://github.com/Xgunter/deklaracje i w konsoli, lub od razu w konsoli.
 
 Pobrać.
 
@@ -59,7 +59,7 @@ I uruchomić
 
 ```./deklaracje.sh```
 
-Można **jednym poleceniem w konsoli**. Uważać na skopiowanie całej linii.
+Lub, **jednym poleceniem w konsoli** można. (Uważać na skopiowanie całej linii.)
 
 ```cd /tmp; wget https://raw.githubusercontent.com/Xgunter/deklaracje/master/deklaracje.sh; chmod +x deklaracje.sh; ./deklaracje.sh```
 
@@ -71,7 +71,7 @@ W terminalu pojawi się menu z wyborem, wpisujemy numer instalacji i zatwierdzam
 * Pierwsze uruchomienie czasami trwa długo, zwłaszcza jak nie mieliśmy środowiska 32-bitowgo. 
 
 Po zainstalowaniu w menu startowym - biuro powinna być możliwość uruchomienia e-deklaracji, 
-czy e-pitów, mozna uruchomić w konsoli wpisując adekwatnie do nazwy e-deklaracje i e-pity.
+czy e-pitów, można uruchomić w konsoli wpisując adekwatnie do nazwy e-deklaracje i e-pity.
 
 ![deklaracje start](https://github.com/Xgunter/deklaracje/blob/master/docs/start.png)
 
@@ -96,12 +96,12 @@ zatwierdzamy jak chcemy korzystać z e-deklaracji.
     
 ```http://archive.ubuntu.com/ubuntu/ bionic main restricted universe```
          
-* **Linuxmint-18.3** mate - , programy działają prawidłowo, tylko nie czyta czasami skrótów startowych 
-  desktop, albo uruchamiamy z terminala, albo kopiujemy na Pulpit/Desktop.
+* **Linuxmint-18.3** z mate, programy działają prawidłowo, tylko nie czyta czasami skrótów startowych 
+  desktop. Albo uruchamiamy z terminala odpowiednio wpisując e-deklaracje, e-pity, albo kopiujemy na Pulpit/Desktop.
   
 ```cp  $HOME/.local/share/applications/e-*.desktop  $HOME/Pulpit/```
-* **deepin-15.5**-amd64 - tak samo jak Linuxmint ma problemy ze aktywatorami desktop, ale można 
-  uruchomić z konsoli e-deklaracje e-pity, pierwsze uruchamiania długie może i z minutę, 
+* **deepin-15.5**-amd64 - tak samo jak Linuxmint ma problemy z aktywatorami desktop, ale można 
+  uruchomić z konsoli e-deklaracje e-pity, pierwsze uruchamiania długie (może i z minutę), 
   tak jak pisałem budowanie środowiska 32-bitowego na systemie 64-bitowym.
 * **Fedora 27**-64bity – nie ma problemów, nie dodałem możliwości instalacji e-pitów, ale sprawdzałem
   działają prawidłowo.
@@ -109,6 +109,15 @@ zatwierdzamy jak chcemy korzystać z e-deklaracji.
   na systemie 32-bity i 64 bity.
 * **OpenSUSE-13.2** – e-deklaracje i e-pity działają prawidłowo, ze względów opisanych wyżej dodana jest
   tylko możliwość instalacji e-pitów.
+
+* Przy informacji.
+
+```
+Gtk-Message: Failed to load module "gail"
+Gtk-Message: Failed to load module "atk-bridge"
+```
+Można doinstalować libatk-adaptor:i386 libgail-common:i386
+
 
 ## Bezpieczeństwo.
 Wszystkie paczki pobierane są z oficjalnych serwerów twórców aplikacji i repozytoriów danej dystrybucji 
