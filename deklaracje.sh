@@ -1,6 +1,6 @@
 #!/bin/bash
 # Instalacja e-deklaracji i e-pitów na Linuksie
-# Wersja 0.8 09.02.2018
+# Wersja 0.9 08.01.2019
 # Na podstawie rozwiązania http://nocnypingwin.pl/e-deklaracje-pod-linuxem-2017/
 # Z wykorzystaniem https://aur.archlinux.org/cgit/aur.git/snapshot/adobe-air.tar.gz
 # Skrypt nie pobiera tej paczki, tylko tworzy plik adobe-air, pozostawiłem opis autora Spider.007 / Sjon
@@ -166,11 +166,11 @@ TXT
 ##e-pity
 e_pit(){
 mkdir $HOME/adobe-air-sdk/e-pity
-wget http://download.e-pity.pl/down/setup_e-pity2017Linux.air
-cp setup_e-pity2017Linux.air $HOME/adobe-air-sdk/e-pity/setup_e-pity2017Linux.air
+wget http://download.e-pity.pl/down/setup_e-pity2018Linux.air
+cp setup_e-pity2018Linux.air $HOME/adobe-air-sdk/e-pity/setup_e-pity2018Linux.air
 
 mkdir e_pity
-unzip setup_e-pity2017Linux.air -d e_pity
+unzip setup_e-pity2018Linux.air -d e_pity
 cp e_pity/Assets/icons/pity_128_256.png $HOME/adobe-air-sdk/e-pity/e-pity.png
 
 cat << TXT | tee $HOME/.local/share/applications/e-pity.desktop
@@ -180,7 +180,7 @@ Comment=e-Pity
 Type=Application
 Terminal=false
 Categories=Office
-Exec=$HOME/adobe-air-sdk/adobe-air/adobe-air  $HOME/adobe-air-sdk/e-pity/setup_e-pity2017Linux.air
+Exec=$HOME/adobe-air-sdk/adobe-air/adobe-air  $HOME/adobe-air-sdk/e-pity/setup_e-pity2018Linux.air
 Icon=$HOME/adobe-air-sdk/e-pity/e-pity.png
 TXT
 
@@ -212,7 +212,7 @@ chmod +x /usr/bin/e-*;
 
 cat > /usr/bin/e-pity <<EOF
 #!/bin/bash
-$HOME/adobe-air-sdk/adobe-air/adobe-air  $HOME/adobe-air-sdk/e-pity/setup_e-pity2017Linux.air
+$HOME/adobe-air-sdk/adobe-air/adobe-air  $HOME/adobe-air-sdk/e-pity/setup_e-pity2018Linux.air
 EOF"
 
 sudo zypper -n install libxslt1-32bit libgnome-keyring0-32bit mozilla-nss-32bit libstdc++6-32bit\
