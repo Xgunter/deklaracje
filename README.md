@@ -1,3 +1,15 @@
+## Spis treści
+* [Deklaracje podatkowe opis.](#deklaracje-podatkowe)
+* [Uwagi.](#uwaga)
+* [Instalacja.](#instalacja)
+* [Działa na dystrybucjach, testowane na.](#testowane-na)
+* [Bezpieczeństwo.](#bezpieczeństwo)
+    * [Kopia zapasowa.](#backup)
+    * [Aktualizacja.](#upgrade)
+    * [Odpowiedzialność.](#odpowiedzialność)
+* [Licencja.](#licencjonowanie)
+
+
 ## Deklaracje podatkowe. 
 Deklaracje podatkowe w systemie Linux. [Skrypt działa na dystrybucjach.](https://github.com/Xgunter/deklaracje/blob/master/README.md#testowane-na)
 
