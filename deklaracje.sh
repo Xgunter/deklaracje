@@ -1,6 +1,7 @@
 #!/bin/bash
 # Instalacja e-deklaracji i e-pitów na Linuksie
-# Wersja 0.10 19.10.2019
+# Licencja GNU GPL v3.0 
+# Wersja 0.11 19.10.2019
 # Na podstawie rozwiązania http://nocnypingwin.pl/e-deklaracje-pod-linuxem-2017/
 # Z wykorzystaniem https://aur.archlinux.org/cgit/aur.git/snapshot/adobe-air.tar.gz
 # Skrypt nie pobiera tej paczki, tylko tworzy plik adobe-air, pozostawiłem opis autora Spider.007 / Sjon
@@ -28,8 +29,6 @@ ubu_nr=$(grep DISTRIB_RELEASE /etc/*-release | cut -d '=' -f2 | tr -d '.')
 
 $sprawdz "if [ $ubu_nr -gt 1710 ]; then
 add-apt-repository universe
-apt update
-echo 'Dodane universe'
 fi
 "
 }
