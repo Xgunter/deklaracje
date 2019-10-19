@@ -109,10 +109,12 @@ zatwierdzamy jak chcemy korzystać z e-deklaracji.
     
 ```http://archive.ubuntu.com/ubuntu/ bionic main restricted universe```
          
-* **Linuxmint-18.3** z mate, programy działają prawidłowo, tylko nie czyta czasami skrótów startowych 
+* **Linuxmint-18.3 do 19.2** z mate, programy działają prawidłowo, tylko nie czyta czasami skrótów startowych 
   desktop. Albo uruchamiamy z terminala odpowiednio wpisując e-deklaracje, e-pity, albo kopiujemy na Pulpit/Desktop.
   
 ```cp  $HOME/.local/share/applications/e-*.desktop  $HOME/Pulpit/```
+* **Na wszystkich pochodnych Ubuntu i Debiana**, powinno działać, sprawdzić czy na "Ubuntowych" jest dodane
+    repozytorium universe, mint ma dodane domyślnie.
 * **deepin-15.5**-amd64 - tak samo jak Linuxmint ma problemy z aktywatorami desktop, ale można 
   uruchomić z konsoli e-deklaracje e-pity, pierwsze uruchamiania długie (może i z minutę), 
   tak jak pisałem budowanie środowiska 32-bitowego na systemie 64-bitowym.
