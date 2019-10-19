@@ -1,5 +1,5 @@
-## Deklaracje podatkowe.
-Deklaracje podatkowe w systemie Linux.
+## Deklaracje podatkowe. 
+Deklaracje podatkowe w systemie Linux. [Skrypt działa na dystrybucjach.](https://github.com/Xgunter/deklaracje/blob/master/README.md#testowane-na)
 
 Skrypt instalujący e-deklaracje i e-pity na systemie Debian i pochodnych, jak Ubuntu, Mint i inne.  
 Testowo Fedora i OpenSuse.
@@ -89,10 +89,11 @@ zatwierdzamy jak chcemy korzystać z e-deklaracji.
 
 ## Testowane na.
 * **Debian stabilny, testowy, niestabilny**, obydwie architektury i368 i x64 – nie ma problemów
-* **Ubuntu-16.04**-64bit -nie ma problemów
-* **Ubuntu-18.04 i nowsze**. Pakiety potrzebne do działania e-deklaracji i e-pitów zostały przeniesione 
-    do repozytoriów **universe**, dlatego trzeba mieć je dodane. Na przykład dla 18.04 w /etc/apt/sources.list 
-    na końcu linii z adresem oficjalnym dodajemy słowo universe. Przykład.
+* **Ubuntu-16.04 do 17.10**-64bit -nie ma problemów
+* **Ubuntu-18.04 do 19.10**. Pakiety potrzebne do działania e-deklaracji i e-pitów zostały przeniesione 
+    do repozytoriów **universe**, dlatego trzeba mieć je dodane. **Dodawane są automatycznie**, można sprawdzić.
+    Na przykład dla 18.04 w /etc/apt/sources.list 
+    na końcu linii z adresem oficjalnym dodajemy słowo universe.  Przykład.
     
 ```http://archive.ubuntu.com/ubuntu/ bionic main restricted universe```
          
@@ -118,6 +119,14 @@ Gtk-Message: Failed to load module "atk-bridge"
 ```
 Można doinstalować libatk-adaptor:i386 libgail-common:i386
 
+## Backup 
+Kopie utworzonych wpisów i ustawień e-deklaracji w Debianie i pochodnych, możemy zrobić w taki sposób.
+
+```zip -r deklaracje_backup.zip  ~/.appdata/```
+
+lub bez pełnej sciezki, teraz dla odmiany może tar-em.
+
+```tar -zcvf deklaracje_backup.tgz .appdata/```
 
 ## Bezpieczeństwo.
 Wszystkie paczki pobierane są z oficjalnych serwerów twórców aplikacji i repozytoriów danej dystrybucji 
