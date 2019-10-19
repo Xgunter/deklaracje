@@ -1,12 +1,12 @@
 #!/bin/bash
 # Instalacja e-deklaracji i e-pitów na Linuksie
-# Wersja 0.9b 08.01.2019
+# Wersja 0.10 19.10.2019
 # Na podstawie rozwiązania http://nocnypingwin.pl/e-deklaracje-pod-linuxem-2017/
 # Z wykorzystaniem https://aur.archlinux.org/cgit/aur.git/snapshot/adobe-air.tar.gz
 # Skrypt nie pobiera tej paczki, tylko tworzy plik adobe-air, pozostawiłem opis autora Spider.007 / Sjon
 # Zlepił w całość i pokolorował :) gunter
 # Nie wszystkie funkcje sprawdzające, czy folder/plik istnieje, są dodane. Bo i po co.
-# UWAGA: W Ubuntu 18.04 i nowszych dodać repozytoria universe, opis w README.
+# UWAGA: Skrypt dodaje repozytoria universe dla Ubuntu 18.04 i nowszych.
 ##tymczasowy
 mkdir /tmp/tmpdek
 cd /tmp/tmpdek
@@ -22,14 +22,33 @@ fi
 ##sudo/su
 if command -v sudo >/dev/null; then sprawdz=$(echo sudo sh -c) ; else sprawdz=$(echo su -c) ; fi
 
+##repo.ubuntu.universe
+ubu_univers(){
+ubu_nr=$(grep DISTRIB_RELEASE /etc/*-release | cut -d '=' -f2 | tr -d '.')
+
+$sprawdz "if [ $ubu_nr -gt 1710 ]; then
+add-apt-repository universe
+apt update
+echo 'Dodane universe'
+fi
+"
+}
+if [ `uname -n` == ubuntu ]; then (ubu_univers); fi
+
+##install packages
+inst(){
+$sprawdz "dpkg --add-architecture i386; apt-get update"
+
+for i in libgtk2.0-0:i386 libstdc++6:i386 libxml2:i386 libxslt1.1:i386 libcanberra-gtk-module:i386\
+		gtk2-engines-murrine:i386 libqt4-qt3support:i386 libgnome-keyring0:i386 libnss-mdns:i386\
+		libnss3:i386 wget unzip bzip2; do
+$sprawdz "apt-get install -y $i"
+done
+}
+
 ##depends_p
 e_dep_p(){
-$sprawdz " dpkg --add-architecture i386; apt-get update;
-
-apt-get install libgtk2.0-0:i386 libstdc++6:i386 libxml2:i386 libxslt1.1:i386 libcanberra-gtk-module:i386\
-		gtk2-engines-murrine:i386 libqt4-qt3support:i386 libgnome-keyring0:i386 libnss-mdns:i386\
-		libnss3:i386 wget unzip -y;
-
+$sprawdz "
 ln -s /usr/lib/i386-linux-gnu/libgnome-keyring.so.0 /usr/lib/libgnome-keyring.so.0;
 ln -s /usr/lib/i386-linux-gnu/libgnome-keyring.so.0.2.0 /usr/lib/libgnome-keyring.so.0.2.0;
 
@@ -46,12 +65,7 @@ EOF
 
 ##depends_d
 e_dep_d(){
-$sprawdz " dpkg --add-architecture i386; apt-get update;
-
-apt-get install libgtk2.0-0:i386 libstdc++6:i386 libxml2:i386 libxslt1.1:i386 libcanberra-gtk-module:i386\
-		gtk2-engines-murrine:i386 libqt4-qt3support:i386 libgnome-keyring0:i386 libnss-mdns:i386\
-		libnss3:i386 wget unzip -y;
-
+$sprawdz "
 wget ftp.adobe.com/pub/adobe/reader/unix/9.x/9.5.5/enu/AdbeRdr9.5.5-1_i386linux_enu.deb;
 dpkg -i AdbeRdr9.5.5-1_i386linux_enu.deb;
 apt-get install -f -y;
@@ -73,12 +87,7 @@ EOF
 
 ##depends_o
 e_dep_o(){
-$sprawdz " dpkg --add-architecture i386; apt-get update;
-
-apt-get install libgtk2.0-0:i386 libstdc++6:i386 libxml2:i386 libxslt1.1:i386 libcanberra-gtk-module:i386\
-		gtk2-engines-murrine:i386 libqt4-qt3support:i386 libgnome-keyring0:i386 libnss-mdns:i386\
-		libnss3:i386 wget unzip -y;
-
+$sprawdz "
 wget ftp.adobe.com/pub/adobe/reader/unix/9.x/9.5.5/enu/AdbeRdr9.5.5-1_i386linux_enu.deb;
 dpkg -i AdbeRdr9.5.5-1_i386linux_enu.deb;
 apt-get install -f -y;
@@ -223,6 +232,7 @@ sudo zypper -n install libxslt1-32bit libgnome-keyring0-32bit mozilla-nss-32bit 
 ##grupy_deb
 deb_d(){
 command -v apt >/dev/null 2>&1 || { echo >&2 "To nie jest dystrybucja deb."; exit 1; }
+(inst)
 (e_dep_d)
 (e_air)
 (e_dek)
@@ -231,6 +241,7 @@ e-deklaracje
 
 deb_p(){
 command -v apt >/dev/null 2>&1 || { echo >&2 "To nie jest dystrybucja deb."; exit 1; }
+(inst)
 (e_dep_p)
 (e_air)
 (e_pit)
@@ -239,6 +250,7 @@ e-pity
 
 deb_o(){
 command -v apt >/dev/null 2>&1 || { echo >&2 "To nie jest dystrybucja deb."; exit 1; }
+(inst)
 (e_dep_o)
 (e_air)
 (e_dek)
