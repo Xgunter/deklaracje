@@ -1,7 +1,7 @@
 #!/bin/bash
 # Instalacja e-deklaracji i e-pitów na Linuksie
 # Licencja GNU GPL v3.0 
-# Wersja 0.12 10.11.2019
+# Wersja 0.12a 10.11.2019
 # Na podstawie rozwiązania http://nocnypingwin.pl/e-deklaracje-pod-linuxem-2017/
 # Z wykorzystaniem https://aur.archlinux.org/cgit/aur.git/snapshot/adobe-air.tar.gz
 # Skrypt nie pobiera tej paczki, tylko tworzy plik adobe-air, pozostawiłem opis autora Spider.007 / Sjon
@@ -176,7 +176,7 @@ TXT
 ##e-pity
 e_pit(){
 mkdir $HOME/adobe-air-sdk/e-pity
-wget -O e-pity_Linux.air  https://download.e-pity.pl/down2018/e-pityLinux.air
+wget -O setup_e-pity_Linux.air  https://download.e-pity.pl/down2018/e-pityLinux.air
 cp setup_e-pity_Linux.air $HOME/adobe-air-sdk/e-pity/setup_e-pity_Linux.air
 
 mkdir e_pity
