@@ -1,7 +1,7 @@
 #!/bin/bash
 # Instalacja e-deklaracji i e-pitów na Linuksie
 # Licencja GNU GPL v3.0 
-# Wersja 0.11 19.10.2019
+# Wersja 0.12 10.11.2019
 # Na podstawie rozwiązania http://nocnypingwin.pl/e-deklaracje-pod-linuxem-2017/
 # Z wykorzystaniem https://aur.archlinux.org/cgit/aur.git/snapshot/adobe-air.tar.gz
 # Skrypt nie pobiera tej paczki, tylko tworzy plik adobe-air, pozostawiłem opis autora Spider.007 / Sjon
@@ -24,6 +24,7 @@ fi
 if command -v sudo >/dev/null; then sprawdz=$(echo sudo sh -c) ; else sprawdz=$(echo su -c) ; fi
 
 ##repo.ubuntu.universe
+ubu_ch(){
 ubu_univers(){
 ubu_nr=$(grep DISTRIB_RELEASE /etc/*-release | cut -d '=' -f2 | tr -d '.')
 
@@ -33,6 +34,7 @@ fi
 "
 }
 if [ `uname -n` == ubuntu ]; then (ubu_univers); fi
+}
 
 ##install packages
 inst(){
@@ -56,7 +58,7 @@ chmod +x /usr/bin/e-*;
 
 cat > /usr/bin/e-pity <<EOF
 #!/bin/bash
-$HOME/adobe-air-sdk/adobe-air/adobe-air  $HOME/adobe-air-sdk/e-pity/setup_e-pity2018Linux.air
+$HOME/adobe-air-sdk/adobe-air/adobe-air  $HOME/adobe-air-sdk/e-pity/setup_e-pity_Linux.air
 
 EOF
 "
@@ -109,7 +111,7 @@ chmod +x /usr/bin/e-*;
 
 cat > /usr/bin/e-pity <<EOF
 #!/bin/bash
-$HOME/adobe-air-sdk/adobe-air/adobe-air  $HOME/adobe-air-sdk/e-pity/setup_e-pity2018Linux.air
+$HOME/adobe-air-sdk/adobe-air/adobe-air  $HOME/adobe-air-sdk/e-pity/setup_e-pity_Linux.air
 
 EOF
 "
@@ -174,11 +176,11 @@ TXT
 ##e-pity
 e_pit(){
 mkdir $HOME/adobe-air-sdk/e-pity
-wget http://download.e-pity.pl/down/setup_e-pity2018Linux.air
-cp setup_e-pity2018Linux.air $HOME/adobe-air-sdk/e-pity/setup_e-pity2018Linux.air
+wget -O e-pity_Linux.air  https://download.e-pity.pl/down2018/e-pityLinux.air
+cp setup_e-pity_Linux.air $HOME/adobe-air-sdk/e-pity/setup_e-pity_Linux.air
 
 mkdir e_pity
-unzip setup_e-pity2018Linux.air -d e_pity
+unzip setup_e-pity_Linux.air -d e_pity
 cp e_pity/Assets/icons/pity_128_256.png $HOME/adobe-air-sdk/e-pity/e-pity.png
 
 cat << TXT | tee $HOME/.local/share/applications/e-pity.desktop
@@ -188,7 +190,7 @@ Comment=e-Pity
 Type=Application
 Terminal=false
 Categories=Office
-Exec=$HOME/adobe-air-sdk/adobe-air/adobe-air  $HOME/adobe-air-sdk/e-pity/setup_e-pity2018Linux.air
+Exec=$HOME/adobe-air-sdk/adobe-air/adobe-air  $HOME/adobe-air-sdk/e-pity/setup_e-pity_Linux.air
 Icon=$HOME/adobe-air-sdk/e-pity/e-pity.png
 TXT
 
@@ -220,7 +222,7 @@ chmod +x /usr/bin/e-*;
 
 cat > /usr/bin/e-pity <<EOF
 #!/bin/bash
-$HOME/adobe-air-sdk/adobe-air/adobe-air  $HOME/adobe-air-sdk/e-pity/setup_e-pity2018Linux.air
+$HOME/adobe-air-sdk/adobe-air/adobe-air  $HOME/adobe-air-sdk/e-pity/setup_e-pity_Linux.air
 EOF"
 
 sudo zypper -n install libxslt1-32bit libgnome-keyring0-32bit mozilla-nss-32bit libstdc++6-32bit\
@@ -231,6 +233,7 @@ sudo zypper -n install libxslt1-32bit libgnome-keyring0-32bit mozilla-nss-32bit 
 ##grupy_deb
 deb_d(){
 command -v apt >/dev/null 2>&1 || { echo >&2 "To nie jest dystrybucja deb."; exit 1; }
+(ubu_ch)
 (inst)
 (e_dep_d)
 (e_air)
@@ -240,6 +243,7 @@ e-deklaracje
 
 deb_p(){
 command -v apt >/dev/null 2>&1 || { echo >&2 "To nie jest dystrybucja deb."; exit 1; }
+(ubu_ch)
 (inst)
 (e_dep_p)
 (e_air)
@@ -249,6 +253,7 @@ e-pity
 
 deb_o(){
 command -v apt >/dev/null 2>&1 || { echo >&2 "To nie jest dystrybucja deb."; exit 1; }
+(ubu_ch)
 (inst)
 (e_dep_o)
 (e_air)
