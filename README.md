@@ -102,7 +102,7 @@ zatwierdzamy jak chcemy korzystać z e-deklaracji.
 ## Testowane na.
 * **Debian stabilny, testowy, niestabilny**, obydwie architektury i368 i x64 – nie ma problemów
 * **Ubuntu-16.04 do 17.10** 32bit/64bit -nie ma problemów
-* **Ubuntu-18.04 do 19.10** - nie ma problemów. 
+* **Ubuntu-18.04 do 19.10, testowa 20.04** - nie ma problemów. 
     Pakiety potrzebne do działania e-deklaracji i e-pitów zostały przeniesione do repozytoriów **universe**, 
     dlatego trzeba mieć je dodane. **Dodawane są automatycznie**, można sprawdzić sources.list.
     Na przykład dla 18.04 w /etc/apt/sources.list na końcu linii z adresem oficjalnym dodane słowo universe.  
@@ -110,7 +110,7 @@ zatwierdzamy jak chcemy korzystać z e-deklaracji.
     
 ```http://archive.ubuntu.com/ubuntu/ bionic main restricted universe```
          
-* **Linuxmint-18.3 do 19.2** działa. Było z mate, programy działają prawidłowo, tylko nie czyta czasami 
+* **Linuxmint-18.3 do 19.3** działa. Było z mate, programy działają prawidłowo, tylko nie czyta czasami 
     skrótów startowych desktop. Albo uruchamiamy z terminala odpowiednio wpisując e-deklaracje, e-pity, 
     albo kopiujemy na Pulpit/Desktop.
   
