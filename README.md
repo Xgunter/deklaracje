@@ -152,7 +152,9 @@ Można skrypt uruchomić na livecd, konieczne minimum 2GB RAM.
 
 ## Upgrade
 
-Wystarczy w miejsce starych paczek (są przetrzymywanie spakowane), wkleić nowe.
+Wystarczy w miejsce starych paczek (są przetrzymywanie spakowane), wkleić nowe. Dla e-deklaracji z tego [adresu](https://www.podatki.gov.pl/e-deklaracje/aplikacja-e-deklaracje-desktop/) zapisać jako **e-DeklaracjeDesktop.air** w katalogu instalacji adobe-air-sdk/e-deklaracje/, lub prosto wget-em z adrsu aktualizacji programu. 
+
+```wget -O $HOME/adobe-air-sdk/e-deklaracje/e-DeklaracjeDesktop.air http://www.finanse.mf.gov.pl/documents/766655/1196444/e-DeklaracjeDesktop.air```
 
 ## Odpowiedzialność.
 
