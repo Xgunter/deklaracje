@@ -1,7 +1,7 @@
 #!/bin/bash
 # Instalacja e-deklaracji i e-pitów na Linuksie 2020
 # Licencja GNU GPL v3.0 
-# Wersja 0.13 20.12.2019
+# Wersja 0.14 12.08.2020
 # Na podstawie rozwiązania http://nocnypingwin.pl/e-deklaracje-pod-linuxem-2017/
 # Z wykorzystaniem https://aur.archlinux.org/cgit/aur.git/snapshot/adobe-air.tar.gz
 # Skrypt nie pobiera tej paczki, tylko tworzy plik adobe-air, pozostawiłem opis autora Spider.007 / Sjon
@@ -42,7 +42,7 @@ $sprawdz "dpkg --add-architecture i386; apt-get update"
 
 for i in libgtk2.0-0:i386 libstdc++6:i386 libxml2:i386 libxslt1.1:i386 libcanberra-gtk-module:i386\
 		gtk2-engines-murrine:i386 libqt4-qt3support:i386 libgnome-keyring0:i386 libnss-mdns:i386\
-		libnss3:i386 wget unzip bzip2; do
+		libnss3:i386 libxt6:i386 wget unzip bzip2; do
 $sprawdz "apt-get install -y $i"
 done
 }
