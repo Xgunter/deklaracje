@@ -1,7 +1,7 @@
 #!/bin/bash
 # Instalacja e-deklaracji na Linuksie 2020
 # Licencja GNU GPL v3.0 
-# Wersja 0.16 08.01.2021
+# Wersja 0.17 08.01.2021
 # Na podstawie rozwiązania http://nocnypingwin.pl/e-deklaracje-pod-linuxem-2017/
 # Z wykorzystaniem https://aur.archlinux.org/cgit/aur.git/snapshot/adobe-air.tar.gz
 # Skrypt nie pobiera tej paczki, tylko tworzy plik adobe-air, pozostawiłem opis autora Spider.007 / Sjon
@@ -303,7 +303,8 @@ tput sgr0
 
 tput setaf 5
 tput cup 7 12
-echo "1. Zainstaluj e-deklaracje"
+#echo "1. Zainstaluj e-deklaracje"
+echo "Adobe usunęło ze swoich serwerów AdobeAIRSDK."
 
 #tput cup 8 12
 #echo "2. Zainstaluj e-pity"
@@ -317,8 +318,8 @@ echo "Instalacja aplikacji dla Fedory"
 tput sgr0
 
 tput setaf 5
-tput cup 13 12
-echo "4. Fedora e-deklaracje"
+#tput cup 13 12
+#echo "4. Fedora e-deklaracje"
 
 #tput cup 14 12
 #echo "5. Suse e-pity"
