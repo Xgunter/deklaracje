@@ -1,3 +1,7 @@
+## !!!    
+## UWAGA: Adobe usunęło ze swoich serwerów AdobeAIRSDK, koniec wsparcia.      
+## ====================
+
 ## Spis treści
 * [Deklaracje podatkowe opis.](#deklaracje-podatkowe)
 * [Uwagi.](#uwaga)
