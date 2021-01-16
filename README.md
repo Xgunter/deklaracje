@@ -5,7 +5,7 @@ Zostały wydane e-Deklaracje o numerze 13.0.0 na rok 2021, do rozliczeń podatku
 
 Jeżeli ktoś zachował spakowany AdobeAIRSDK.tbz2, to można dalej zainstalować e-Deklaracje na Linuksie. Natomiast nie ma oficjalnego miejsca, z którego można pobrać AdobeAIRSDK dla Linuksa, nowy właściciel/opiekun tej technologi Harman, udostępnia tylko wersje SDK dla Windowsa i MacOS-a.
 
-Trzeba pamiętać, że technologia ta nie jest wspierane i najnowsze wersje tej technologi są niedostępne od kilku lat na systemy Linux, dlatego była używana alternatywa w postaci AdobeAIRSDK, która już nie jest dostępna do pobrania z oficjalnego źródła. Może lepiej pomyśleć o rozliczeniu się przez alternatywne sposoby, tylko że e-Deklaracje mają niepodważalne zalety, których nie ma alternatywa, bez pośredników, bez profilu zaufanego i w łatwy sposób możemy się rozliczyć.
+Trzeba pamiętać, że technologia ta nie jest wspierane i najnowsze wersje tej technologi są niedostępne od kilku lat na systemy Linux, dlatego była używana alternatywa w postaci AdobeAIRSDK, która już nie jest dostępna do pobrania z oficjalnego źródła. Może lepiej pomyśleć o rozliczeniu się przez alternatywne sposoby, tylko że e-Deklaracje mają niepodważalne zalety, których nie ma alternatywa, bez pośredników, bez profilu zaufanego i w łatwy sposób możemy się rozliczyć. [Oficjalnie e-Deklaracje są tylko dla systemu Windows](https://www.podatki.gov.pl/e-deklaracje/aplikacja-e-deklaracje-desktop/).
 
 ## ====================
 
@@ -165,7 +165,7 @@ Można skrypt uruchomić na livecd, konieczne minimum 2GB RAM.
 
 Wystarczy w miejsce starych paczek (są przetrzymywanie spakowane), wkleić nowe. Dla e-deklaracji z tego [adresu](https://www.podatki.gov.pl/e-deklaracje/aplikacja-e-deklaracje-desktop/) zapisać jako **e-DeklaracjeDesktop.air** w katalogu instalacji adobe-air-sdk/e-deklaracje/, lub prosto wget-em z adrsu aktualizacji programu. 
 
-```wget -O $HOME/adobe-air-sdk/e-deklaracje/e-DeklaracjeDesktop.air http://www.finanse.mf.gov.pl/documents/766655/1196444/e-DeklaracjeDesktop.air```
+```wget -O $HOME/adobe-air-sdk/e-deklaracje/e-DeklaracjeDesktop.air https://www.finanse.mf.gov.pl/documents/766655/1196444/e-DeklaracjeDesktop.air```
 
 ## Odpowiedzialność.
 
