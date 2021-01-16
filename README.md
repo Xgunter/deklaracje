@@ -1,9 +1,11 @@
 ## !!!    
 ## UWAGA: Adobe usunęło ze swoich serwerów AdobeAIRSDK, koniec wsparcia. 
 
-Zostały wydane e-deklaracje o numerze 13.0.0 na rok 2021, do rozliczeń podatku z roku 2020, jeżeli ktoś zachował starą instalacje e-deklaracji z poprzednich lat i ma folder adobe-air-sdk, to może zaktualizować do najnowszej wersji w sposób opisany w [punkcje Upgrade](#upgrade). Najnowsze e-Deklaracje działają w Linuksie podobnie jak poprzednie wersje. 
+Zostały wydane e-Deklaracje o numerze 13.0.0 na rok 2021, do rozliczeń podatku z roku 2020, jeżeli ktoś zachował starą instalację e-Deklaracji z poprzednich lat i ma folder adobe-air-sdk, to może zaktualizować do najnowszej wersji w sposób opisany w [punkcje o Upgrade](#upgrade). Najnowsze e-Deklaracje działają w Linuksie podobnie jak poprzednie wersje. 
 
-Jeżeli ktoś zachował spakowany AdobeAIRSDK.tbz2, to można dalej zainstalować e-Deklaracje na Linuksie. Natomiast nie ma oficjalnego miejsca z którego można pobrać AdobeAIRSDK dla Linuksa, nowy właściciel/opiekun tej technologi Harman, udostępnia tylko wersje SDK dla Windowsa i MacOS-a.
+Jeżeli ktoś zachował spakowany AdobeAIRSDK.tbz2, to można dalej zainstalować e-Deklaracje na Linuksie. Natomiast nie ma oficjalnego miejsca, z którego można pobrać AdobeAIRSDK dla Linuksa, nowy właściciel/opiekun tej technologi Harman, udostępnia tylko wersje SDK dla Windowsa i MacOS-a.
+
+Trzeba pamiętać, że technologia ta nie jest wspierane i najnowsze wersje tej technologi są niedostępne od kilku lat na systemy Linux, dlatego była używana alternatywa w postaci AdobeAIRSDK, która już nie jest dostępna do pobrania z oficjalnego źródła. Może lepiej pomyśleć o rozliczeniu się przez alternatywne sposoby, tylko że e-Deklaracje mają niepodważalne zalety, których nie ma alternatywa, bez pośredników, bez profilu zaufanego i w łatwy sposób możemy się rozliczyć.
 
 ## ====================
 
